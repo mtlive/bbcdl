@@ -7,7 +7,7 @@ language: python
 addons:
   apt:
     sources:
-    - mc3man/trusty-media
+    - mc3man-trusty-media
     packages:
     - ffmpeg python3
 
