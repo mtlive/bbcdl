@@ -16,10 +16,9 @@ addons:
     - openjdk-7-jdk > /dev/null
 script:
 # Install dependency
-- sudo apt-get  -qq install -y dpkg
-- sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ bionic main"
-- sudo apt-get  -qq update 
-- sudo apt  -qq install libfl2
+#- sudo apt-get  -qq install -y dpkg
+#- sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ bionic main"
+#- sudo apt-get  -qq update 
 
 - pip3 install --upgrade youtube-dl
 - youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<2100]" --postprocessor-args "-crf 23 -tune film"
