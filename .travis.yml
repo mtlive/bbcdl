@@ -3,15 +3,12 @@ dist: trusty
 #services:
 #  - docker
 #before_install:
-language: None
+language: python
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+    - mc3man/trusty-media
     packages:
-    - gcc-7
-    - g++-7
-    - flex
     - ffmpeg python3
 
 script:
