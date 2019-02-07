@@ -19,7 +19,7 @@ script:
 
 - pyenv global 3.7.1
 - pip3 install --upgrade youtube-dl
-- youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<2100]" --recode-video mp4 --postprocessor-args "-crf 27 -tune film"
+- youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<2100]" --recode-video mkv --postprocessor-args "-crf 23 -tune film"
 
 - ls -l
 
