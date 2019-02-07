@@ -9,7 +9,7 @@ addons:
     sources:
 #    - mc3man-trusty-media
     packages:
-    - ffmpeg python3
+    - ffmpeg
 
 script:
 # Install dependency
@@ -19,7 +19,7 @@ script:
 
 - pyenv global 3.7.1
 - pip3 install --upgrade youtube-dl
-- youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --embed-subs --proxy http://178.32.59.233:53281/ -f "[height >= 480][tbr<2100]" --postprocessor-args "-crf 27 -tune film"
+- youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.254.14.227:61402/ -f "[height >= 480][tbr<2100]" --postprocessor-args "-crf 27 -tune film"
 
 - ls -l
 
