@@ -14,9 +14,9 @@ addons:
 script:
 # Install dependency
 #- sudo apt-get  -qq install -y dpkg
-- sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ cosmic main"
+- sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ cosmic main universe"
 - sudo apt-get  -qq update 
-- sudo apt-get  -qq install -y ffmpeg
+- sudo apt-get  install -y ffmpeg
 
 - pyenv global 3.7.1
 - pip3 install --upgrade youtube-dl
