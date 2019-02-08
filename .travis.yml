@@ -10,19 +10,23 @@ addons:
 #    - mc3man-trusty-media
     packages:
     - ffmpeg
+cache:
+  directories:
+    - ~/
 
 script:
 # Install dependency
 #- sudo apt-get  -qq install -y dpkg
 - sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ cosmic main universe"
-- sudo apt-get  -qq update 
-- sudo apt-get  install -y ffmpeg
+- sudo apt-get -qq update 
+- sudo apt-get -qq install -y ffmpeg
 
 - pyenv global 3.7.1
 - pip3 install --upgrade youtube-dl
+- cd ~/
 - youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<2100]"
 # --recode-video mkv --postprocessor-args "-crf 27 -tune film"
-- travis_wait 60 ffmpeg -i "Hospital, Series 4, Episode 3-b0c13jyh.mp4" -crf 24 output.mp4 -strict -2
+- travis_wait 80 ffmpeg -i "Hospital, Series 4, Episode 3-b0c13jyh.mp4" -crf 24 output.mp4
 - ls -l
 
 deploy:
