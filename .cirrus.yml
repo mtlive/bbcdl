@@ -14,8 +14,8 @@ task:
 
     - pip3 install --upgrade youtube-dl
     - cd ~/
-    - youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<2100]" #--recode-video mkv --postprocessor-args "-crf 24 -tune film"
-    - ffmpeg -i "Hospital, Series 4, Episode 3-b0c13jyh.mp4" -crf 24 output.mp4
+#    - youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<2100]" #--recode-video mkv --postprocessor-args "-crf 24 -tune film"
+#    - ffmpeg -i "Hospital, Series 4, Episode 3-b0c13jyh.mp4" -crf 24 output.mp4
     - ls -l
     - curl --upload-file "./output.mp4" https://transfer.sh/HospitalS4E3.mp4
     - curl --upload-file "./Hospital, Series 4, Episode 3-b0c13jyh.mkv" https://transfer.sh/HospitalS4E3.mkv
