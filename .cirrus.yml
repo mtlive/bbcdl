@@ -5,17 +5,21 @@ task:
     image: python:latest
   timeout_in: 120m
   pip_cache:
-#    folder: ~/
+    folder: ~/
 
   build_script:
 # Install dependency
     - apt-get update
     - apt-get -qq install ffmpeg
+    - add-apt-repository ppa:jon-hedgerows/get-iplayer
+    - apt-get update
+    - apt-get -qq install get-iplayer
 
-    - pip3 install --upgrade youtube-dl
+#    - pip3 install --upgrade youtube-dl
     - cd ~/
-    - youtube-dl https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<=2380]" --recode-video mkv --postprocessor-args "-crf 25 -tune film" -o "output.%(ext)s"
+#    - youtube-dl https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<=2380]" --recode-video mkv --postprocessor-args "-crf 25 -tune film" -o "output.%(ext)s"
     #- ffmpeg -i *.mp4 -crf 25 output.mp4
+    - get_iplayer --get https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 --command-tv='ffmpeg -i "<filename>" -i *.srt -c:v copy -c:a copy -scodec srt -crf 25 -tune film -y output.mkv'
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
 
