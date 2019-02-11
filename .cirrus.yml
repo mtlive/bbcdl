@@ -28,7 +28,7 @@ task:
 
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
-    - curl -T ./output.mkv ftp://${AUTH_TOKEN}@ftp.drivehq.com
+    - lftp -c open -u ${ENCRYPTED[e3ec7dde9d4cbf92f38fcf5f44bbb22b1d5e79e729f479ae09eae1d9ac5f1c4d637a291ee122a491377a0d5b8078ff97]} ftp.drivehq.com && put -e output.mkv
 
    
 
