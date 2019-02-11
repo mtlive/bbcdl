@@ -4,6 +4,8 @@ task:
     memory: 8G
     image: python:latest
   timeout_in: 120m
+  environment:
+    AUTH_TOKEN: ENCRYPTED[2664fad20e7c061526260b49f86e3c748df317ea566ebb8b85ecff44865573e5cd562baed1c70ef5d3af75c21da4329c]
   pip_cache:
     folder: ~/
 
@@ -26,7 +28,7 @@ task:
 
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
-    - curl -T ./output.mkv ftp://${ENCRYPTED[2664fad20e7c061526260b49f86e3c748df317ea566ebb8b85ecff44865573e5cd562baed1c70ef5d3af75c21da4329c]}@ftp.drivehq.com
+    - curl -T ./output.mkv ftp://${AUTH_TOKEN}@ftp.drivehq.com
 
    
 
