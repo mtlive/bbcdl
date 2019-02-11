@@ -22,7 +22,7 @@ task:
 #    - youtube-dl https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<=2380]" --recode-video mkv --postprocessor-args "-crf 25 -tune film" -o "output.%(ext)s"
     #- ffmpeg -i *.mp4 -crf 25 output.mp4
 
-    - get_iplayer --proxy=http://62.7.85.234:8080/ --get https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 --command-tv='ffmpeg -i "<filename>" -i *.srt libx264 -crf 24 -tune film -preset veryslow -scodec srt -y output.mkv'
+    - get_iplayer --proxy=http://62.7.85.234:8080/ --get https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 --command-tv='ffmpeg -i "<filename>" -i *.srt -c:v libx264 -crf 24 -tune film -preset veryslow -c:a copy -scodec srt -y output.mkv'
 
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
