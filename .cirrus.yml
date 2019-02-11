@@ -5,14 +5,14 @@ task:
     image: python:latest
   timeout_in: 120m
   environment:
-    AUTH_TOKEN: ENCRYPTED[2664fad20e7c061526260b49f86e3c748df317ea566ebb8b85ecff44865573e5cd562baed1c70ef5d3af75c21da4329c]
+    AUTH_TOKEN: ENCRYPTED[e3ec7dde9d4cbf92f38fcf5f44bbb22b1d5e79e729f479ae09eae1d9ac5f1c4d637a291ee122a491377a0d5b8078ff97]
   pip_cache:
     folder: ~/
 
   build_script:
 # Install dependency
     - apt-get update
-    - apt-get -qq install software-properties-common  ffmpeg
+    - apt-get -qq install software-properties-common  ffmpeg lftp
     - add-apt-repository ppa:jon-hedgerows/get-iplayer
     - apt-get update
     - apt-get -qq --allow-unauthenticated install get-iplayer
@@ -28,7 +28,7 @@ task:
 
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
-    - lftp -c open -u ${ENCRYPTED[e3ec7dde9d4cbf92f38fcf5f44bbb22b1d5e79e729f479ae09eae1d9ac5f1c4d637a291ee122a491377a0d5b8078ff97]} ftp.drivehq.com && put -e output.mkv
+    - lftp -c open -u ${AUTH_TOKEN} ftp.drivehq.com && put -e output.mkv
 
    
 
