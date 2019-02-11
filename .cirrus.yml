@@ -13,7 +13,7 @@ task:
     - apt-get -qq install software-properties-common  ffmpeg
     - add-apt-repository ppa:jon-hedgerows/get-iplayer
     - apt-get update
-    - apt-get -qq install get-iplayer
+    - apt-get -qq --allow-unauthenticated install get-iplayer
 
 #    - pip3 install --upgrade youtube-dl
     - cd ~/
