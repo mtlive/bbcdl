@@ -10,7 +10,7 @@ task:
   build_script:
 # Install dependency
     - apt-get update
-    - apt-get -qq install python-software-properties ffmpeg
+    - apt-get -qq install software-properties-common  ffmpeg
     - add-apt-repository ppa:jon-hedgerows/get-iplayer
     - apt-get update
     - apt-get -qq install get-iplayer
