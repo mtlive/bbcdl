@@ -4,15 +4,13 @@ task:
     memory: 8G
     image: python:latest
   timeout_in: 120m
-  environment:
-    AUTH_TOKEN: ENCRYPTED[e3ec7dde9d4cbf92f38fcf5f44bbb22b1d5e79e729f479ae09eae1d9ac5f1c4d637a291ee122a491377a0d5b8078ff97]
   pip_cache:
     folder: ~/
 
   build_script:
 # Install dependency
     - apt-get update
-    - apt-get -qq install software-properties-common  ffmpeg lftp
+    - apt-get -qq install magic-wormhole software-properties-common  ffmpeg
     - add-apt-repository ppa:jon-hedgerows/get-iplayer
     - apt-get update
     - apt-get -qq --allow-unauthenticated install get-iplayer
@@ -28,7 +26,8 @@ task:
 
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
-    - lftp -c open -u ${AUTH_TOKEN} ftp.drivehq.com && put -e output.mkv
+    - wget -qO- https://raw.githubusercontent.com/datproject/dat/master/download.sh | bash
+    - dat share output.mkv
 
    
 
