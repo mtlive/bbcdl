@@ -26,6 +26,7 @@ task:
 
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
+    - rm -rf .dat
     - wget -qO- https://raw.githubusercontent.com/datproject/dat/master/download.sh | bash
     - /root/.dat/releases/dat*/dat share output.mkv
 
