@@ -17,19 +17,20 @@ task:
 
 #    - pip3 install --upgrade youtube-dl
     - cd ~/
-#    - rm output.mkv | echo ""
+    - rm -R * #output.mkv | echo ""
 
 #    - youtube-dl https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<=2380]" --recode-video mkv --postprocessor-args "-crf 25 -tune film" -o "output.%(ext)s"
     #- ffmpeg -i *.mp4 -crf 25 output.mp4
 
-#    - get_iplayer --proxy=http://62.7.85.234:8080/ --get https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 --command-tv='ffmpeg -i "<filename>" -i *.srt -c:v libx264 -crf 25 -tune film -preset veryslow -c:a copy -scodec srt -y output.mkv'
+    - get_iplayer --proxy=http://62.7.85.234:8080/ --get https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 --command-tv='ffmpeg -i "<filename>" -i *.srt -c:v libx264 -crf 25 -tune film -preset veryslow -c:a copy -scodec srt -y output.mkv'
 
     - ls -l
-#    - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv
-    - rm -rf /root/.dat
-    - wget -qO- https://raw.githubusercontent.com/datproject/dat/master/download.sh | bash
-    - mv /root/.dat /root/.dat-bin
-    - /root/.dat-bin/releases/dat-13.11.4-linux-x64/dat share output.mkv
+    - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv | echo
+    - apt-get -qq install openssl ca-certificates xclip
+    - wget https://github.com/timvisee/ffsend/releases/download/v0.1.2/ffsend-v0.1.2-linux-x64
+    - chmod 777 ffsend-v0.1.2-linux-x64
+    - ffsend-v0.1.2-linux-x64 upload output.mkv | echo
+  
 
    
 
