@@ -16,7 +16,7 @@ task:
     - apt-get update -oAcquire::AllowInsecureRepositories=true
     - apt-get -qq  --allow-unauthenticated install -y deb-multimedia-keyring
     - apt-get update
-    - apt-get dist-upgrade
+#    - apt-get dist-upgrade
     - apt-get -qq --allow-unauthenticated install get-iplayer ffmpeg
 
 #    - pip3 install --upgrade youtube-dl
