@@ -18,7 +18,7 @@ task:
 
 #    - pip3 install --upgrade youtube-dl
     - cd ~/
-    - rm -R * #output.mkv | echo ""
+ 
 
 #    - youtube-dl https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<=2380]" --recode-video mkv --postprocessor-args "-crf 25 -tune film" -o "output.%(ext)s"
     #- ffmpeg -i *.mp4 -crf 25 output.mp4
