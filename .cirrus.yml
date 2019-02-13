@@ -4,8 +4,8 @@ task:
     memory: 8G
     image: python:latest
   timeout_in: 120m
-  pip_cache:
-    folder: ~/
+  #pip_cache:
+  #  folder: ~/
 
   build_script:
 # Install dependency
