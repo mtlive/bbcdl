@@ -24,7 +24,7 @@ task:
     #- ffmpeg -i *.mp4 -crf 25 output.mp4
 
     - get_iplayer --proxy=http://62.7.85.234:8080/ --get https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 #--command-tv='ffmpeg -i "<filename>" -i *.srt -c:v libx264 -crf 24.4 -tune film -preset veryslow -c:a copy -scodec srt -y output.mkv'
-    - ffmpeg -i *.mp4 -i *.srt -c:v libx264 -crf 24.4 -tune film -preset veryslow -c:a aac -q:a 0.15 -scodec srt -y output.mkv
+    - ffmpeg -i *.mp4 -i *.srt -c:v libx264 -crf 24.4 -tune film -preset veryslow -c:a aac -scodec srt -y output.mkv
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv && echo
 
