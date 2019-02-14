@@ -10,11 +10,11 @@ task:
   build_script:
 # Install dependency
     - apt-get update
-    - apt-get -qq install magic-wormhole software-properties-common
+    - apt-get -qq install software-properties-common
     - add-apt-repository ppa:jon-hedgerows/get-iplayer
     - echo "deb http://ftp.us.debian.org/debian buster main" >> /etc/apt/sources.list
     - apt-get update
-    - apt-get -qq --allow-unauthenticated -y install get-iplayer ffmpeg
+    - apt-get -qq --allow-unauthenticated -y install get-iplayer ffmpeg nodejs
 
 #    - pip3 install --upgrade youtube-dl
     - cd ~/
