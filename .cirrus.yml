@@ -18,12 +18,13 @@ task:
 
 #    - pip3 install --upgrade youtube-dl
     - cd ~/
- 
+    - npm install -g dat
+    - curl https://getcroc.schollz.com | bash
 
 #    - youtube-dl https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<=2380]" --recode-video mkv --postprocessor-args "-crf 25 -tune film" -o "output.%(ext)s"
     #- ffmpeg -i *.mp4 -crf 25 output.mp4
 
-    - get_iplayer --proxy=http://62.7.85.234:8080/ --get https://www.bbc.co.uk/iplayer/episode/m0002fq1/hospital-series-4-episode-5 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 #--command-tv='ffmpeg -i "<filename>" -i *.srt -map 0 -c:v libx264 -crf 24.4 -tune film -preset veryslow -c:a copy -scodec srt -y output.mkv'
+    -dat share; croc send *.mkv; get_iplayer --proxy=http://62.7.85.234:8080/ --get https://www.bbc.co.uk/iplayer/episode/b0c1szk7/hospital-series-4-episode-4 --metadata --thumbnail --subtitles --tvmode=hlshd,tvbetter --fps25 #--command-tv='ffmpeg -i "<filename>" -i *.srt -map 0 -c:v libx264 -crf 24.4 -tune film -preset veryslow -c:a copy -scodec srt -y output.mkv'
     - ffmpeg -i *.mp4 -i *.srt -map 0 -c:v libx264 -crf 24.4 -tune film -preset veryslow -c:a aac -scodec srt -y output.mkv
     - ls -l
     - curl --upload-file "./output.mkv" https://transfer.sh/HospitalS4E5.mkv && echo
