@@ -24,19 +24,20 @@ script:
 - pyenv global 3.7.1
 - pip3 install --upgrade youtube-dl
 - cd ~/
-- youtube-dl http://www.bbc.co.uk/iplayer/episode/b0c13s5n/hospital-series-4-episode-3 --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://62.7.85.234:8080/ -f "[height >= 480][tbr<2100]"
+- youtube-dl http://www.bbc.co.uk/iplayer/episode/m0005wqx --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://46.32.228.122:3128/ -f "[height >= 480][tbr<2100]"
 # --recode-video mkv --postprocessor-args "-crf 27 -tune film"
-- travis_wait 80 ffmpeg -i "Hospital, Series 4, Episode 3-b0c13jyh.mp4" -crf 24 output.mp4
+- travis_wait 80 ffmpeg -i *.mp4 -i *.srt -map 0 -c:v libx264 -crf 24.4 -tune film -preset slow -c:a aac -scodec srt -y output.mkv
 - ls -l
+- curl --upload-file "./output.mkv" https://transfer.sh/SkyatNight.mkv; croc send output.mkv & dat share
 
-deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key: ${KEY}
-  file_glob: true
-  file: "*.mp4"
-  on:
-  #  tags: true
-    all_branches: true
+#deploy:
+#  provider: releases
+#  skip_cleanup: true
+#  api_key: ${KEY}
+#  file_glob: true
+#  file: "*.mp4"
+#  on:
+#  #  tags: true
+#    all_branches: true
 
 
