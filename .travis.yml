@@ -24,7 +24,7 @@ script:
 - pyenv global 3.7.1
 - pip3 install --upgrade youtube-dl
 - cd ~/
-- youtube-dl http://www.bbc.co.uk/iplayer/episode/m0005wqx --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://46.32.228.122:3128/ -f "[height >= 480][tbr<2100]"
+- youtube-dl http://www.bbc.co.uk/iplayer/episode/m0005wqx --add-metadata --write-sub --convert-subs srt --embed-subs --proxy http://134.209.176.34:8080/ -f "[height >= 480][tbr<2100]"
 # --recode-video mkv --postprocessor-args "-crf 27 -tune film"
 - travis_wait 80 ffmpeg -i *.mp4 -i *.srt -map 0 -c:v libx264 -crf 24.4 -tune film -preset slow -c:a aac -scodec srt -y output.mkv
 - ls -l
